@@ -10,8 +10,8 @@ This project divided into module ``blackbox`` ``core`` and ``util``
 ### APPS AND FUNCTIONS
 
 - blackbox : This contains test suite for ```authentication section``` , ``recipients``
-- core: This contains e core functionalities of the system
-- UTILS: This contains globally used methods on the system
+- core: This contains core functionalities of the system
+- utils: This contains globally used methods on the system
 
 ## Run Locally
 
@@ -32,7 +32,8 @@ Install dependencies
 ```bash
   pip install -r requirements.txt
 ```
-
+##Online demo
+```https://receipt-fe-emizy.vercel.app```
 TEST SETUP ENVIRONMENT VARIABLE
 ## parameters must be set inside test_receipt.py and test_authentication.py
 ``TEST_USER_EMAIL = ''``
