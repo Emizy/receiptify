@@ -35,8 +35,8 @@ Install dependencies
 
 TEST SETUP ENVIRONMENT VARIABLE
 ## parameters must be set inside test_receipt.py and test_authentication.py
-TEST_USER_EMAIL = ''
-TEST_USER_PASSWORD = ''
+``TEST_USER_EMAIL = ''``
+``TEST_USER_PASSWORD = ''``
 
 RUN TEST SUITE
 
