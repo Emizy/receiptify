@@ -1,0 +1,231 @@
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body style="margin: 0 !important;padding: 0px !important;">
+<style>
+
+    ._ {
+        font-size: 32px;
+        font-weight: 500;
+    }
+
+
+    ._p ._li, ._ul ._li, ._ol ._li {
+        margin-left: 5px;
+        list-style-position: inside;
+    }
+
+
+    /* -------------------------------------
+        OTHER STYLES THAT MIGHT BE USEFUL
+    ------------------------------------- */
+
+    .aligncenter {
+        text-align: center;
+    }
+
+    ._float-right {
+        float: right !important;
+
+    }
+
+    .alignright {
+        text-align: right;
+    }
+
+    .no_border {
+        border-top: none !important;
+    }
+
+
+    /* -------------------------------------
+        INVOICE
+        Styles for the billing table
+    ------------------------------------- */
+    .lab_invoice_ {
+        margin: 40px auto;
+        text-align: left;
+        width: 80%;
+
+    }
+
+    .lab_invoice_ td {
+        padding: 5px 0;
+    }
+
+    .lab_invoice_ .invoice-items {
+        width: 100%;
+    }
+
+    .lab_invoice_ .invoice-items td {
+        border-top: #eee 1px solid;
+    }
+
+    .lab_invoice_ .invoice-items .total .td_class {
+        border-top: 2px solid #333;
+        border-bottom: 2px solid #333;
+        font-weight: 700;
+    }
+
+    /* -------------------------------------
+        RESPONSIVE AND MOBILE FRIENDLY STYLES
+    ------------------------------------- */
+    @media only screen and (max-width: 640px) {
+        ._h1, ._h2, ._h3, ._h4 {
+            font-weight: 600 !important;
+            margin: 20px 0 5px !important;
+        }
+
+        ._h1 {
+            font-size: 22px !important;
+        }
+
+        ._h2 {
+            font-size: 18px !important;
+        }
+
+        ._h3 {
+            font-size: 16px !important;
+        }
+
+
+        ._content, ._content-wrap {
+            padding: 10px !important;
+        }
+
+        .lab_invoice_ {
+            width: 100% !important;
+        }
+    }
+
+    ._container {
+        font-size: 10px !important;
+    }
+
+    #invoice_reciept_file {
+        padding: 3mm;
+        width: 80mm;
+        margin: 45pt;
+        font-size: 20px;
+    }
+</style>
+
+<table class="_body-wrap" id="invoice_reciept_file" style="">
+    <tbody>
+    <tr>
+        <td class="_container" width="600" style="width: 100% !important; display: block !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+        /* makes it centered */
+        clear: both !important;">
+            <div class="_content" style=" max-width: 600px;
+        margin: 0 auto;
+        display: block;
+        padding: 20px;    position: relative;
+    right: 66px;">
+                <table class="lab_main_" width="100%" cellpadding="0" cellspacing="0" style="background: #fff;
+        border: 1px solid #e9e9e9;width: 100% !important;
+        border-radius: 3px;font-size: 15px !important;">
+                    <tbody>
+                    <tr>
+                        <td class="_content-wrap aligncenter" style=" vertical-align: top;padding: 20px !important;">
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <td class="_content-block" style=" vertical-align: top;width: 100%">
+                                        <div class="logo" style="margin: auto;display: table">
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="_content-block" style=" vertical-align: top;width: 100%">
+                                        <h6 style="margin: auto;display: table;font-size: 10px !important;font-family: Poppins;">
+                                            Receiptify</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="_content-block" style=" vertical-align: top;">
+                                        <table class="lab_invoice_" style="width: 100%">
+                                            <tbody>
+                                            <tr>
+                                                <td style="padding-bottom: 27px; padding: 5px 0; vertical-align: top;">
+                                                    <span>Name: {{ order.customer.name }}</span><br>
+                                                    <span>Email: {{ order.customer.email }}</span><br>
+                                                    <span>Mobile: {{ order.customer.mobile }}</span><br>
+                                                    <span>Address: {{ order.customer.address }}</span><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 5px 0; vertical-align: top;">
+                                                    <table class="invoice-items" style=" width: 100%;" cellpadding="0"
+                                                           cellspacing="0">
+                                                        <tbody>
+                                                        {% for item in order_items %}
+                                                            <tr>
+                                                                <td style=" border-top: #eee 1px solid; vertical-align: top;padding: 5px 0">{{ item.name }}</td>
+                                                                <td style=" border-top: #eee 1px solid; vertical-align: top;  text-align: right;padding: 5px 0"
+                                                                    class="alignright">{{ item.price }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        <tr class="total">
+                                                            <td style=" border-top: 2px solid #333; vertical-align: top;
+        border-bottom: 2px solid #333;
+        font-weight: 700;" colspan="2">
+                                                                <table class="_float-right"
+                                                                       style=" float: right !important;">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td class="alignright no_border" width="80%"
+                                                                            style="border-top: none !important;padding: 5px 0; vertical-align: top; text-align: right;width: 80%">
+                                                                            Total:
+                                                                        </td>
+                                                                        <td class="alignright no_border"
+                                                                            style="border-top: none !important;padding: 5px 0; vertical-align: top; text-align: right;width: 80%">
+                                                                            <span class="ml-2">{{ total_amount_payable|intcomma }}</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="_content-block"
+                                        style="text-align: center; vertical-align: top; padding: 0 0 20px;font-size: 10px">
+                                        <small>****</small>Thanks for your patronage<small>***</small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="_content-block">
+                                        <div style="margin: auto;display: table;font-size: 10px !important;">receipt
+                                            generated by: receiptify <br><a style=" color: #999;"
+                                                                            href="mailto:">info@receiptify.com</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
